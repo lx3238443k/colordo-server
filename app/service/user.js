@@ -10,7 +10,7 @@ class UserService extends Service{
         const upsert = 'REPLACE INTO `user` (`openId` ,`gender` ,`city` ,`province`,`country`,`avatarUrl`,`nickName`,`session_key`) VALUES (?,? ,?,?,?,?,?,?)';
         const info  =[res.data.openid,userInfo.gender,userInfo.city,userInfo.province,userInfo.country,userInfo.avatarUrl,userInfo.nickName,res.data.session_key];
         const sql_res = await this.app.mysql.query(upsert,info); 
-       console.log(res);
+     
         return res.data;
     }
   
