@@ -1,0 +1,19 @@
+{
+  "name": "todo-server",
+  "version": "1.0.0",
+  "description": "todo server by egg.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "egg-bin dev"
+  },
+  "author": "dogly",
+  "license": "ISC",
+  "dependencies": {
+    "egg": "^2.3.0",
+    "egg-mysql": "^3.0.0"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.3.7"
+  }
+}
