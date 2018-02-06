@@ -10,7 +10,6 @@ class UserService extends Service{
         const upsert = 'INSERT INTO `user` (`openId` ,`gender` ,`city` ,`province`,`country`,`avatarUrl`,`nickName`,`session_key`) VALUES (?,? ,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE session_key=?';
         const info  =[res.data.openid,userInfo.gender,userInfo.city,userInfo.province,userInfo.country,userInfo.avatarUrl,userInfo.nickName,res.data.session_key,res.data.session_key];
         const sql_res = await this.app.mysql.query(upsert,info); 
-     
         return res.data;
     }
   
