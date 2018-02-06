@@ -31,8 +31,6 @@ class TodoController extends Controller{
         const res=await this.ctx.service.todo.updateTodo(req.openid,req.remindId,req.row);
         this.ctx.body=res;
     }
-
-  
 }
 
 module.exports = TodoController;
