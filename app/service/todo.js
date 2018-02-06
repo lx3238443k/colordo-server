@@ -4,10 +4,10 @@ class TodoService extends Service {
     async addTodo(openid, todo) {
         return base(this, msq_addTodo, arguments);
     }
-    async deleteTodo(openid, todo) {
+    async deleteTodo(openid,remindId) {
         return base(this,msq_deleteTodo, arguments);
     }
-    async updateTodo(openid, todo) {
+    async updateTodo(openid,remindId,row) {
         return base(this,msq_updateTodo, arguments);
     }
     async getTodo(openid) {
@@ -43,19 +43,18 @@ async function msq_addTodo(openid, todo) {
 
 async function msq_deleteTodo(openid, remindId) {
     //先删除todouser
-    let msq_res1 = await this.app.mysql.delete('todoUser', { todoId: todoid });
+    let msq_res1 = await this.app.mysql.delete('userTodo', { todoId: remindId });
     //再删除todos
-    let msq_res2 = await this.app.mysql.delete('todos', { remindId: todoid });
+    let msq_res2 = await this.app.mysql.delete('todos', { remindId: remindId });
 }
 
 async function msq_updateTodo(openid, remindId, row) {
-    row['remindId'] = remindId;
-    let msq_res = await this.app.mysql.update('todos', row);
+    await this.app.mysql.update('todos', row,{where:{remindId:remindId}});
 }
 
 //返回openid对应的所有的todos
 async function msq_getTodos(openid) {
-    let todos = await this.app.mysql.query('select * from todos left join usertodo where usertodo.userId=?', [openid])
+    let todos = await this.app.mysql.query('select * from userTodo left join todos on userTodo.todoId=todos.remindId  where userTodo.userId=?', [openid])
     return todos;
 }
 

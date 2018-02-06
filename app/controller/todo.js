@@ -17,7 +17,7 @@ class TodoController extends Controller {
    */
     async deleteTodo() {
         const req = this.ctx.request.body;
-        const res = await this.ctx.service.todo.deleteTodo(req.openid, req.remindId);
+        const res = await this.ctx.service.todo.deleteTodo(req.openid,req.remindId);
         this.ctx.body = res;
     }
 
