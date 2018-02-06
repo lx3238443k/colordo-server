@@ -4,13 +4,14 @@
   "description": "todo server by egg.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "egg-bin test",
     "dev": "egg-bin dev"
   },
   "author": "dogly",
   "license": "ISC",
   "dependencies": {
     "egg": "^2.3.0",
+    "egg-mock": "^3.14.0",
     "egg-mysql": "^3.0.0"
   },
   "devDependencies": {
