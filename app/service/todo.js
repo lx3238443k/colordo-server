@@ -43,9 +43,9 @@ async function msq_addTodo(openid, todo) {
 
 async function msq_deleteTodo(openid, remindId) {
     //先删除todouser
-    let msq_res1 = await this.app.mysql.delete('todoUser', { todoId: todoid });
+    let msq_res1 = await this.app.mysql.delete('userTodo', { todoId: remindId });
     //再删除todos
-    let msq_res2 = await this.app.mysql.delete('todos', { remindId: todoid });
+    let msq_res2 = await this.app.mysql.delete('todos', { remindId: remindId });
 }
 
 async function msq_updateTodo(openid, remindId, row) {
