@@ -26,7 +26,19 @@ class TodoController extends Controller{
     *所需参数：type，todoId，（color，eventTime，completeTime/isComplete）
     */
     async updateTodo(){
-        
+        const req = this.ctx.request.body;
+
+        switch(req.type){
+            case 'updateColor':
+
+                break;
+            case 'updateEventTime':
+
+                break;
+            case 'updateIsComplete':
+
+                break;
+        }
     }
 
   
