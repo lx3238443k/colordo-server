@@ -2,7 +2,7 @@ logs/
 npm-debug.log
 yarn-error.log
 node_modules/
-./config/secret.js
+
 package-lock.json
 yarn.lock
 coverage/
