@@ -2,6 +2,7 @@ logs/
 npm-debug.log
 yarn-error.log
 node_modules/
+config/secret.js
 package-lock.json
 yarn.lock
 coverage/
@@ -10,4 +11,3 @@ run/
 .DS_Store
 *.sw*
 *.un~
-config/secret.js
