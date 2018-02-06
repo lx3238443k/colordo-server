@@ -1,3 +1,4 @@
+const wx=require('./secret');
 exports.keys = '123'
 
 
@@ -7,7 +8,7 @@ exports.mysql = {
       host: '127.0.0.1',
       port: '3306',
       user: 'root',
-      password: '',
+      password: wx.mysql_secret,
       database: 'colordoDB',
     },
     app: true,
@@ -21,6 +22,4 @@ exports.security = {
         enable: false,
       },
   
-    
-
   };
