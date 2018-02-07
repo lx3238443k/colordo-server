@@ -50,7 +50,7 @@ describe('test/service/todo.test.js', () => {
         // 通过 ctx 访问到 service.todo
         const result = await ctx.service.todo.getTodo('oEg0L0Wou6qomnhDb_7PUTrmY2Qs')
         assert(result);
-        console.log(result);
+        // console.log(result);
     })
 
 
