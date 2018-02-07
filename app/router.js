@@ -4,6 +4,7 @@ module.exports = app => {
 
     router.post('addTodo','/todo/addTodo',controller.todo.addTodo);
     router.post('addShareTodo','/todo/addShareTodo',controller.todo.addShareTodo);
+    router.post('deleteShareTodo','/todo/deleteShareTodo',controller.todo.deleteShareTodo);
     router.post('deleteTodo','/todo/deleteTodo',controller.todo.deleteTodo);
     router.post('updateTodo','/todo/updateTodo',controller.todo.updateTodo);
     router.get('/todo/getTodos',controller.todo.getTodos);
