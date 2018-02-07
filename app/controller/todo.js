@@ -56,9 +56,12 @@ class TodoController extends Controller {
      *查询当前用户对应的todos
      *所需参数openid
     */
-    async getTodos() {
-        const querie = this.ctx.request.querie;
-        const result = await this.ctx.service.todo.getTodos(querie.openid);
+
+    async getTodo() {
+        const querie = this.ctx.request.query;
+        const res = await this.ctx.service.todo.getTodo(querie.openid);
+
+
         this.ctx.body = res;
     }
 
