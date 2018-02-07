@@ -4,6 +4,12 @@ class TodoService extends Service {
     async addTodo(openid, todo) {
         return base(this, msq_addTodo, arguments);
     }
+    async addShareTodo(openid,remindId){
+        return base(this,msq_addShareTodo,arguments);
+    }
+    async deleteShareTodo(openid,remindId){
+        return base(this,msq_deleteShareTodo,arguments);
+    }
     async deleteTodo(openid,remindId) {
         return base(this,msq_deleteTodo, arguments);
     }
@@ -28,6 +34,9 @@ async function base(context,fun, param) {
     }
 }
 
+async function msq_deleteShareTodo(openid,remindId) {
+    await this.app.mysql.delete('userTodo',{userId:openid,todoId:remindId});
+}
 
 async function msq_addTodo(openid, todo) {
     //插入todo
@@ -39,6 +48,10 @@ async function msq_addTodo(openid, todo) {
         isOwner: true
     }
     let msq_res2 = await this.app.mysql.insert('userTodo', usertodo);
+}
+
+async function msq_addShareTodo(openid,remindId) {
+    let msq_res=await this.app.mysql.insert('userTodo',{userId:openid,todoId:remindId,isOwner:false});
 }
 
 async function msq_deleteTodo(openid, remindId) {

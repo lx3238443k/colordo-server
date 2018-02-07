@@ -12,6 +12,25 @@ class TodoController extends Controller {
     }
 
     /*
+     *添加分享的todo
+     *所需参数：openid,remindId
+    */
+    async addShareTodo(){
+        const req = this.ctx.request.body;
+        const res = await this.ctx.service.todo.addShareTodo(req.openid, req.remindId);
+        this.ctx.body = res;
+    }
+
+     /*
+     *删除分享的todo，从该任务中退出，不影响任务本身
+     *所需参数：openid,remindId
+    */
+    async deleteShareTodo(){
+        const req = this.ctx.request.body;
+        const res = await this.ctx.service.todo.deleteShareTodo(req.openid, req.remindId);
+        this.ctx.body = res;
+    }
+    /*
    *删除todo
    *所需参数:todos.remindId，openid,
    */
