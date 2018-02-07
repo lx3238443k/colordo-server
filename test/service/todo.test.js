@@ -28,12 +28,29 @@ describe('test/service/todo.test.js', () => {
         assert(result === 'suc');
     })
 
+    it('should add SharedTodo', async () => {
+        const ctx = app.mockContext();
+        // 通过 ctx 访问到 service.todo
+        const result = await ctx.service.todo.addShareTodo('oEg0L0Wou6qomnhDb_7PUTrmY2Qs','b9JaC25n33JwRlD6U0vJtFvjUqlwunjdYJI7972428878')
+        assert(result);
+        assert(result === 'suc');
+    })
+
+    it('should delete ShareTodo', async () => {
+        const ctx = app.mockContext();
+        // 通过 ctx 访问到 service.todo
+        const result = await ctx.service.todo.deleteShareTodo('oEg0L0Wou6qomnhDb_7PUTrmY2Qs','b9JaC25n33JwRlD6U0vJtFvjUqlwunjdYJI7972428878')
+        assert(result);
+        assert(result === 'suc');
+    })
+    
+
     it('should add getTodos', async () => {
         const ctx = app.mockContext();
         // 通过 ctx 访问到 service.todo
         const result = await ctx.service.todo.getTodo('oEg0L0Wou6qomnhDb_7PUTrmY2Qs')
         assert(result);
-        console.log(result);
+        // console.log(result);
     })
 
 
