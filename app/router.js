@@ -7,6 +7,8 @@ module.exports = app => {
     router.post('deleteTodo','/todo/deleteTodo',controller.todo.deleteTodo);
     router.post('updateTodo','/todo/updateTodo',controller.todo.updateTodo);
     router.get('/todo/getTodos',controller.todo.getTodos);
+    
+    router.get('/todo/getTodoAndComments',controller.todo.getTodoAndComments);
 
     router.post('addComment','/comment/addComment',controller.comment.addComment);
     router.post('deleteComment','/comment/deleteComment',controller.comment.deleteComment);

@@ -58,10 +58,19 @@ class TodoController extends Controller {
     */
     async getTodos() {
         const querie = this.ctx.request.querie;
-        const result = await this.ctx.service.todo.getTodo(querie.openid);
+        const result = await this.ctx.service.todo.getTodos(querie.openid);
         this.ctx.body = res;
     }
 
+    /*
+    获取一条任务的详情，包括头像，子任务的详情
+    参数 remindId
+    */
+    async getTodoAndComments() {
+        const querie = this.ctx.request.querie;
+        const result = await this.ctx.service.todo.getTodoAndComments(querie.remindId);
+        this.ctx.body = res;
+    }
 
 
 }
