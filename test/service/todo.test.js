@@ -48,7 +48,7 @@ describe('test/service/todo.test.js', () => {
     it('should add getTodos', async () => {
         const ctx = app.mockContext();
         // 通过 ctx 访问到 service.todo
-        const result = await ctx.service.todo.getTodo('oEg0L0Wou6qomnhDb_7PUTrmY2Qs')
+        const result = await ctx.service.todo.getTodos('oEg0L0Wou6qomnhDb_7PUTrmY2Qs')
         assert(result);
         // console.log(result);
     })
@@ -63,6 +63,13 @@ describe('test/service/todo.test.js', () => {
     })
 
 
+    it('获取任务的详情',async () => {
+        const ctx = app.mockContext();
+        // 通过 ctx 访问到 service.todo
+        const result = await ctx.service.todo.getTodoAndComments('W7nQKUhlm5JV5YpvMzI5Qqqfagc9FR1Qt8h7914604854');
+        console.log(result);
+        
+    })
 
 
 });

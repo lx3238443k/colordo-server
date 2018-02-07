@@ -6,7 +6,7 @@ describe('test/service/comment.test.js', () => {
     it('添加comment', async () => {
         const ctx = app.mockContext();
         let result = await ctx.service.comment.addComment("oEg0L0Wou6qomnhDb_7PUTrmY2Qs", {
-            commentUid: 'helloa',
+            commentUid: 'helloabc',
             createTime: '2018-02-06 14:06:00',
             commentContent: '这是一条子任务',
             commentColor: '#D05050',
@@ -19,14 +19,14 @@ describe('test/service/comment.test.js', () => {
     })
     it('修改comment',async ()=>{
         const ctx = app.mockContext();
-        let result=await ctx.service.comment.updateComment('helloa',{isComplete:true});
+        let result=await ctx.service.comment.updateComment('helloabc',{isComplete:true});
         assert(result);
         assert(result === 'suc');
     })
 
     it('删除comment', async () => {
         const ctx = app.mockContext();
-        let result = await ctx.service.comment.deleteComment('helloa');
+        let result = await ctx.service.comment.deleteComment('helloabc');
         assert(result);
         assert(result === 'suc');
     })

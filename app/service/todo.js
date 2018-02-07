@@ -16,8 +16,12 @@ class TodoService extends Service {
     async updateTodo(openid,remindId,row) {
         return base(this,msq_updateTodo, arguments);
     }
-    async getTodo(openid) {
+    async getTodos(openid) {
         return base(this,msq_getTodos, arguments);
+    }
+
+    async getTodoAndComments(remindId){
+       return base(this,msq_getTodoAndComments,arguments);
     }
 }
 
@@ -69,6 +73,20 @@ async function msq_updateTodo(openid, remindId, row) {
 async function msq_getTodos(openid) {
     let todos = await this.app.mysql.query('select * from userTodo left join todos on userTodo.todoId=todos.remindId  where userTodo.userId=?', [openid])
     return todos;
+}
+
+async function msq_getTodoAndComments(remindId) {
+    let remind= await this.app.mysql.query('select avatarUrl, nickName,remindId, createTime, creatorOpenId, eventContent, todoColor, eventTime, completeTime, isComplete from todos left join user on todos.creatorOpenId=user.openId where remindId=?',[remindId]);
+    if(remind.length<1){
+        return [];
+    }
+    remind=remind[0];
+    
+    let comments=await this.app.mysql.query(
+        'select avatarUrl, nickName, commentId, commentUid, createTime, commentContent, commentColor, isComplete, completeTime, creatorOpenId, parentId from comment left join user on comment.creatorOpenId=user.openId where parentId=?'
+        ,[remindId]);
+    remind['comments']=comments;
+    return remind;
 }
 
 module.exports = TodoService;
