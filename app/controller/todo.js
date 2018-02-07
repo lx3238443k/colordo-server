@@ -39,8 +39,8 @@ class TodoController extends Controller {
     */
 
     async getTodo() {
-        const querie = this.ctx.request.querie;
-        const result = await this.ctx.service.todo.getTodo(querie.openid);
+        const querie = this.ctx.request.query;
+        const res = await this.ctx.service.todo.getTodo(querie.openid);
         this.ctx.body = res;
     }
 }
