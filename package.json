@@ -10,6 +10,7 @@
   "author": "dogly",
   "license": "ISC",
   "dependencies": {
+    "await-stream-ready": "^1.0.1",
     "egg": "^2.3.0",
     "egg-mock": "^3.14.0",
     "egg-mysql": "^3.0.0",

@@ -70,9 +70,9 @@ class TodoController extends Controller {
     参数 remindId
     */
     async getTodoAndComments() {
-        const querie = this.ctx.request.querie;
+        const querie = this.ctx.request.query;
         const result = await this.ctx.service.todo.getTodoAndComments(querie.remindId);
-        this.ctx.body = res;
+        this.ctx.body = result;
     }
 
 

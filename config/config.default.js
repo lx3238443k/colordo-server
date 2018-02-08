@@ -9,6 +9,7 @@ exports.mysql = {
     user: 'root',
     password: wx.mysql_secret,
     database: 'colordoDB',
+    timezone:'UTC'
   },
   app: true,
   // load into agent, default is close

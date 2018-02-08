@@ -82,6 +82,9 @@ async function msq_getTodoAndComments(remindId) {
     }
     remind=remind[0];
 
+    let partner=await this.app.mysql.query('select avatarUrl from user left join userTodo on user.openId=userTodo.userId where userTodo.todoId=?',[remindId]);
+    remind['partner']=partner;
+
     let comments=await this.app.mysql.query(
         'select avatarUrl, nickName, commentId, commentUid, createTime, commentContent, commentColor, isComplete, completeTime, creatorOpenId, parentId from comment left join user on comment.creatorOpenId=user.openId where parentId=?'
         ,[remindId]);

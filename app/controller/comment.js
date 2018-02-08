@@ -23,7 +23,7 @@ class CommentController extends Controller {
  */
   async updateComment() {
     const req = this.ctx.request.body;
-    const res = await this.ctx.service.comment.deleteComment(req.commentUid,req.row);
+    const res = await this.ctx.service.comment.updateComment(req.commentUid,req.row);
     this.ctx.body = res;
   }
 
