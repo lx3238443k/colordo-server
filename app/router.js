@@ -16,4 +16,8 @@ module.exports = app => {
     router.post('updateComment','/comment/updateComment',controller.comment.updateComment);
 
 
+    router.post('uploadBackgroud','/background/upload',controller.background.upload);
+    router.get('/background/download/:filename',controller.background.download);
+
+
 }

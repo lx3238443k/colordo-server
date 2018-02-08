@@ -57,9 +57,9 @@ class TodoController extends Controller {
      *所需参数openid
     */
 
-    async getTodo() {
+    async getTodos() {
         const querie = this.ctx.request.query;
-        const res = await this.ctx.service.todo.getTodo(querie.openid);
+        const res = await this.ctx.service.todo.getTodos(querie.openid);
 
 
         this.ctx.body = res;

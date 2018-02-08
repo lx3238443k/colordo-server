@@ -12,7 +12,8 @@
   "dependencies": {
     "egg": "^2.3.0",
     "egg-mock": "^3.14.0",
-    "egg-mysql": "^3.0.0"
+    "egg-mysql": "^3.0.0",
+    "stream-wormhole": "^1.0.3"
   },
   "devDependencies": {
     "egg-bin": "^4.3.7"
