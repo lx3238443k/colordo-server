@@ -11,27 +11,29 @@ class BackgroundController extends Controller {
         let result;
 
         const stream = await this.ctx.getFileStream();
-        const openid=encodeURIComponent(stream.fieldname);
+        const openid = encodeURIComponent(stream.fieldname);
         const filename = openid + Date.parse(new Date()) + path.extname(stream.filename).toLowerCase();
 
         try {
-            const user=await this.app.mysql.get('user',{openId:openid});
-            const currentFile=user.backgroundImage;
-            const oldpath= path.join(this.config.baseDir, this.config.multipart.picturePath, currentFile);
-            if(fs.existsSync(oldpath)){
-                fs.unlinkSync(oldpath);
+            const user = await this.app.mysql.get('user', { openId: openid });
+            const currentFile = user.backgroundImage;
+            if (currentFile) {
+                const oldpath = path.join(this.config.baseDir, this.config.multipart.picturePath, currentFile);
+                if (fs.existsSync(oldpath)) {
+                    fs.unlinkSync(oldpath);
+                }
             }
             const target = path.join(this.config.baseDir, this.config.multipart.picturePath, filename);
             const writeStream = fs.createWriteStream(target);
             await awaitWriteStream(stream.pipe(writeStream));
-            await this.app.mysql.update('user',{backgroundImage:filename},{where:{openId:openid}})
-            result='suc'
+            await this.app.mysql.update('user', { backgroundImage: filename }, { where: { openId: openid } })
+            result = 'suc'
         } catch (err) {
-            result='fail'
+            result = 'fail'
             await sendToWormhole(stream);
             throw err;
         }
-        this.ctx.body ={result:result,filename:filename};
+        this.ctx.body = { result: result, filename: filename };
     }
     //下载图片，openid
     async download() {
@@ -41,7 +43,7 @@ class BackgroundController extends Controller {
     }
 }
 
-function deleteBackgroundImage(openid){
+function deleteBackgroundImage(openid) {
 
 }
 
