@@ -71,7 +71,7 @@ async function msq_updateTodo(openid, remindId, row) {
 
 //返回openid对应的所有的todos
 async function msq_getTodos(openid) {
-    let todos = await this.app.mysql.query('select * from usertodo left join todos on userTodo.todoId=todos.remindId  where userTodo.userId=?', [openid])
+    let todos = await this.app.mysql.query('select * from userTodo left join todos on userTodo.todoId=todos.remindId  where userTodo.userId=?', [openid])
     return todos;
 }
 
