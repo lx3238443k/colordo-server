@@ -86,7 +86,7 @@ async function msq_getTodoAndComments(remindId) {
     remind['partner']=partner;
 
     let comments=await this.app.mysql.query(
-        'select avatarUrl, nickName, commentId, commentUid, createTime, commentContent, commentColor, isComplete, completeTime, creatorOpenId, parentId from comment left join user on comment.creatorOpenId=user.openId where parentId=?'
+        'select * from comment left join user on comment.creatorOpenId=user.openId where parentId=?'
         ,[remindId]);
     remind['comments']=comments;
     return remind;
